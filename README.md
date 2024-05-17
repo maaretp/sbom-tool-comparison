@@ -8,3 +8,4 @@ There is a general need of selecting what of the many SBOM generating tools we w
 * Compare to Artifactory Xray
 * Compare License Detection
 * Create summary of summaries
+* Compare Vuln Detection
