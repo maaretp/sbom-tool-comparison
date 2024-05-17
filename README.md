@@ -14,3 +14,4 @@ There is a general need of selecting what of the many SBOM generating tools we w
 * Compare License Detection
 * Create summary of summaries
 * Compare Vuln Detection
+* Comparison with local images
