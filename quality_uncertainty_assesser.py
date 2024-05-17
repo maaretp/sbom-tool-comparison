@@ -155,7 +155,9 @@ images =["python:3.12-slim-bookworm",
          "rabbitmq:3.13-management",
          "postgres:12.19-bookworm",
          "envoyproxy/envoy:v1.30.1",
-         "python:3.13-slim-bookworm"]
+         "python:3.13-slim-bookworm",
+         "almalinux:8.9-minimal",
+         "kartoza/geoserver:2.11.2"]
 get_sboms_for_images(image)
 get_component_info_grype_json(image, "json_grype.json", "components_grype.txt")
 syft = get_component_info_spdx_sbom(image, "sbom_syft.json", "components_syft.txt")
