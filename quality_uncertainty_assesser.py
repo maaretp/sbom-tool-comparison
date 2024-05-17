@@ -141,7 +141,9 @@ def do_counts(input_file):
 
 #samples with one docker image for now
 base_folder = "results"
-images =["python:3.12-slim-bookworm",
+images = ["python:3.12-slim-bookworm"]
+
+""" images =["python:3.12-slim-bookworm",
          "node:18.16.1-alpine",
          "rabbitmq:3.12.12-management",
          "envoyproxy/envoy:v1.12.2",
@@ -163,7 +165,7 @@ images =["python:3.12-slim-bookworm",
          #"14-alpine", #non-zero exit status
          #"18.20.2-alpine", #non-zero exit status
          #"python:3.13-slim-bookworm", #non-zero exit status
-         ]
+         ] """
 
 for image in images:
     print(f"\nProcessing image: {image}")
