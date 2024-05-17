@@ -141,8 +141,6 @@ def do_counts(input_file):
 
 #samples with one docker image for now
 base_folder = "results"
-image = "python:3.12-slim-bookworm"
-
 images =["python:3.12-slim-bookworm",
          "node:18.16.1-alpine",
          "rabbitmq:3.12.12-management",
