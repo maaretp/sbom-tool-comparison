@@ -163,7 +163,7 @@ images =["python:3.12-slim-bookworm",
          ]
 
 for image in images:
-    print(f"Processing image: {image}")
+    print(f"\nProcessing image: {image}")
     results_location = os.path.join(base_folder, image)
     get_sboms_for_images(image)
     get_component_info_grype_json(image, "json_grype.json", "components_grype.txt")
