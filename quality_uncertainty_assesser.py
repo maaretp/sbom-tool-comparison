@@ -153,6 +153,9 @@ images =["python:3.12-slim-bookworm",
          "rabbitmq:3.13-management",
          "envoyproxy/envoy:v1.30.1",
          "almalinux:8.9-minimal",
+         "node", #"20.12.2-alpine3.19",
+         "nginx", #"alpine3.19-slim",
+         "eclipse-temurin", #"17.0.10_7-jre-alpine"
          #"postgres:12.9-bullseye",  #fails to get versioninfo, syft
          #"postgres:12.19-bookworm", #fails to get versioninfo, syft
          #"kartoza/geoserver:2.11.2", #fails to get versioninfo, syft
@@ -160,6 +163,8 @@ images =["python:3.12-slim-bookworm",
          #"14-alpine", #non-zero exit status
          #"18.20.2-alpine", #non-zero exit status
          #"python:3.13-slim-bookworm", #non-zero exit status
+         #"rockylinux/rockylinux", #fails to get versioninfo, syft
+         #"alpine/helm", #fails to get versioninfo, syft
          ]
 
 for image in images:
