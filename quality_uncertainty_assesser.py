@@ -141,6 +141,21 @@ def do_counts(input_file):
 
 #samples with one docker image for now
 image = "python:3.12-slim-bookworm"
+images =["python:3.12-slim-bookworm",
+         "node:18.16.1-alpine",
+         "rabbitmq:3.12.12-management",
+         "postgres:12.9-bullseye",
+         "envoyproxy/envoy:v1.12.2",
+         "python:3.10-buster",
+         "electronuserland/builder:wine",
+         "gradle:6.6.1-jdk11",
+         "openjdk:11-jdk",
+         "14-alpine",
+         "18.20.2-alpine",
+         "rabbitmq:3.13-management",
+         "postgres:12.19-bookworm",
+         "envoyproxy/envoy:v1.30.1",
+         "python:3.13-slim-bookworm"]
 get_sboms_for_images(image)
 get_component_info_grype_json(image, "json_grype.json", "components_grype.txt")
 syft = get_component_info_spdx_sbom(image, "sbom_syft.json", "components_syft.txt")
