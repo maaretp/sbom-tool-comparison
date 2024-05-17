@@ -8,6 +8,7 @@ There is a general need of selecting what of the many SBOM generating tools we w
 
 ## To Do
 
+* syft identifies stuff outside intended scope as components in the script
 * Compare to upstream project shared info
 * Compare to Artifactory Xray
 * Compare License Detection
