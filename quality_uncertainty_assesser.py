@@ -143,13 +143,13 @@ def do_counts(input_file):
 base_folder = "results"
 image = "python:3.12-slim-bookworm"
 
-images =["python:3.12-slim-bookworm", 
+images =["python:3.12-slim-bookworm",
          "node:18.16.1-alpine",
          "rabbitmq:3.12.12-management",
          "envoyproxy/envoy:v1.12.2",
          "python:3.10-buster",
          "electronuserland/builder:wine",
-         "openjdk:11-jdk", 
+         "openjdk:11-jdk",
          "rabbitmq:3.13-management",
          "envoyproxy/envoy:v1.30.1",
          "almalinux:8.9-minimal",
