@@ -140,43 +140,42 @@ def do_counts(input_file):
         return count
 
 #samples with one docker image for now
+base_folder = "results"
 image = "python:3.12-slim-bookworm"
 
-images =["python:3.12-slim-bookworm",
+images =["python:3.12-slim-bookworm", 
          "node:18.16.1-alpine",
          "rabbitmq:3.12.12-management",
-         "postgres:12.9-bullseye",
          "envoyproxy/envoy:v1.12.2",
          "python:3.10-buster",
          "electronuserland/builder:wine",
-         "gradle:6.6.1-jdk11",
-         "openjdk:11-jdk",
-         "14-alpine",
-         "18.20.2-alpine",
+         "openjdk:11-jdk", 
          "rabbitmq:3.13-management",
-         "postgres:12.19-bookworm",
          "envoyproxy/envoy:v1.30.1",
-         "python:3.13-slim-bookworm",
          "almalinux:8.9-minimal",
-         "kartoza/geoserver:2.11.2"]
+         #"postgres:12.9-bullseye",  #fails to get versioninfo, syft
+         #"postgres:12.19-bookworm", #fails to get versioninfo, syft
+         #"kartoza/geoserver:2.11.2", #fails to get versioninfo, syft
+         #"gradle:6.6.1-jdk11", #fails to get versioninfo, syft
+         #"14-alpine", #non-zero exit status
+         #"18.20.2-alpine", #non-zero exit status
+         #"python:3.13-slim-bookworm", #non-zero exit status
+         ]
 
-#for image in images:
-#    print(f"Processing image: {image}")
-
-base_folder = "results"
-
-results_location = os.path.join(base_folder, image)
-get_sboms_for_images(image)
-get_component_info_grype_json(image, "json_grype.json", "components_grype.txt")
-syft = get_component_info_spdx_sbom(image, "sbom_syft.json", "components_syft.txt")
-print (f"syft components identified: {syft}")
-docker = get_component_info_spdx_sbom(image, "sbom_docker.json", "components_docker.txt")
-print (f"docker components identified: {docker}")
-scout = get_component_info_spdx_sbom(image, "sbom_scout.json", "components_scout.txt")
-print (f"scout components identified: {scout}")
-create_summary(image)
-create_diffs(image)
-print(f'Number of components found by all three: {do_counts(os.path.join(results_location,"summary_all_yes.txt"))}')
-print(f'Number of components missed by two tools: {do_counts(os.path.join(results_location, "summary_two_no.txt"))}')
-print(f'Number of components missed by some tool: {do_counts(os.path.join(results_location, "summary_some_no.txt"))}')
-print(f'Number of components found two tools: {do_counts(os.path.join(results_location, "summary_two_yes.txt"))}')
+for image in images:
+    print(f"Processing image: {image}")
+    results_location = os.path.join(base_folder, image)
+    get_sboms_for_images(image)
+    get_component_info_grype_json(image, "json_grype.json", "components_grype.txt")
+    syft = get_component_info_spdx_sbom(image, "sbom_syft.json", "components_syft.txt")
+    print (f"syft components identified: {syft}")
+    docker = get_component_info_spdx_sbom(image, "sbom_docker.json", "components_docker.txt")
+    print (f"docker components identified: {docker}")
+    scout = get_component_info_spdx_sbom(image, "sbom_scout.json", "components_scout.txt")
+    print (f"scout components identified: {scout}")
+    create_summary(image)
+    create_diffs(image)
+    print(f'Number of components found by all three: {do_counts(os.path.join(results_location,"summary_all_yes.txt"))}')
+    print(f'Number of components missed by two tools: {do_counts(os.path.join(results_location, "summary_two_no.txt"))}')
+    print(f'Number of components missed by some tool: {do_counts(os.path.join(results_location, "summary_some_no.txt"))}')
+    print(f'Number of components found two tools: {do_counts(os.path.join(results_location, "summary_two_yes.txt"))}')

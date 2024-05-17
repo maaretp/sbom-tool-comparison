@@ -4,7 +4,7 @@ There is a general need of selecting what of the many SBOM generating tools we w
 
 ## To Do
 
-* Extend to other images
 * Compare to upstream project shared info
 * Compare to Artifactory Xray
 * Compare License Detection
+* Create summary of summaries
