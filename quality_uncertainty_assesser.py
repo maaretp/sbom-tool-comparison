@@ -160,11 +160,11 @@ images =["python:3.12-slim-bookworm",
          #"postgres:12.19-bookworm", #fails to get versioninfo, syft
          #"kartoza/geoserver:2.11.2", #fails to get versioninfo, syft
          #"gradle:6.6.1-jdk11", #fails to get versioninfo, syft
+         #"rockylinux/rockylinux", #fails to get versioninfo, syft
+         #"alpine/helm", #fails to get versioninfo, syft
          #"14-alpine", #non-zero exit status
          #"18.20.2-alpine", #non-zero exit status
          #"python:3.13-slim-bookworm", #non-zero exit status
-         #"rockylinux/rockylinux", #fails to get versioninfo, syft
-         #"alpine/helm", #fails to get versioninfo, syft
          ]
 
 for image in images:
