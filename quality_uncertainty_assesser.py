@@ -42,8 +42,12 @@ def get_component_info_spdx_sbom(image: str, file_name: str, outfile_name: str):
         data = json.load(file)
 
     with open(os.path.join(base_folder, image,"temp.txt"), 'w') as outfile:
-        for package in data['packages']:
-            outfile.write(f"{package['name']} {package['versionInfo']}\n")
+        try:
+            for package in data['packages']:
+                outfile.write(f"{package['name']} {package['versionInfo']}\n")
+        except KeyError:
+            for package in data['packages']:
+                outfile.write(f"{package['name']} MISSING \n")
 
     seen_lines = set()
 
@@ -141,9 +145,10 @@ def do_counts(input_file):
 
 #samples with one docker image for now
 base_folder = "results"
-images = ["python:3.12-slim-bookworm"]
+#images = ["python:3.12-slim-bookworm"]
 
-""" images =["python:3.12-slim-bookworm",
+images =[
+        "python:3.12-slim-bookworm",
          "node:18.16.1-alpine",
          "rabbitmq:3.12.12-management",
          "envoyproxy/envoy:v1.12.2",
@@ -156,16 +161,16 @@ images = ["python:3.12-slim-bookworm"]
          "node", #"20.12.2-alpine3.19",
          "nginx", #"alpine3.19-slim",
          "eclipse-temurin", #"17.0.10_7-jre-alpine"
-         #"postgres:12.9-bullseye",  #fails to get versioninfo, syft
-         #"postgres:12.19-bookworm", #fails to get versioninfo, syft
-         #"kartoza/geoserver:2.11.2", #fails to get versioninfo, syft
-         #"gradle:6.6.1-jdk11", #fails to get versioninfo, syft
-         #"rockylinux/rockylinux", #fails to get versioninfo, syft
-         #"alpine/helm", #fails to get versioninfo, syft
-         #"14-alpine", #non-zero exit status
+         "postgres:12.9-bullseye",
+         "postgres:12.19-bookworm",
+         "kartoza/geoserver:2.11.2",
+         "gradle:6.6.1-jdk11",
+         "alpine/helm", 
+         "rockylinux/rockylinux", #non-zero exit status
+         #"14-alpine",
          #"18.20.2-alpine", #non-zero exit status
          #"python:3.13-slim-bookworm", #non-zero exit status
-         ] """
+         ]
 
 for image in images:
     print(f"\nProcessing image: {image}")
