@@ -3,3 +3,6 @@
 *.json
 local_images/
 results/
+.DS_Store
+manualcheck-debian-bookworm/
+xray/
