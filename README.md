@@ -8,6 +8,8 @@ There is a general need of selecting what of the many SBOM generating tools we w
 
 ## To Do
 
+* Generate quality scores with sbomqs
+* Combine with https://github.com/interlynk-io/sbomasm
 * syft identifies stuff outside intended scope as components in the script
 * Compare to upstream project shared info
 * Compare to Artifactory Xray
@@ -15,3 +17,4 @@ There is a general need of selecting what of the many SBOM generating tools we w
 * Create summary of summaries
 * Compare Vuln Detection
 * Comparison with local images
+
